@@ -8,6 +8,7 @@
 # Новый блок строк должен записываться в новый текстовый файл.
 
 def translate(number: str):
+    """Функция выполняет перевод английских числительных(до десяти) на русский"""
     number_translate = {"one": "один", "two": "два", "three": "три", "four": "четыре", "five": "пять", "six": "шесть",
                         "seven": "семь", "eight": "восемь", "nine": "девять", "ten": "десять"}
     return number_translate[number.lower()].title()

@@ -22,6 +22,7 @@ try:
         firm_list = []
         firm_dict = {}
         average_dict = {}
+        lesion_firm = {}  # убыточные фирмы
         for line in file:  # делаю так что бы избавиться от символа перевода на новую строку
             firm_list.append(line.rstrip().split())
         print("Прибыль фирм: ")
@@ -32,9 +33,11 @@ try:
                 firm_dict[firm[0]] = profit
                 summa += profit
                 count += 1
+            else:
+                lesion_firm[firm[0]] = profit
         average_dict["average_profit"] = summa/count
         print(f"Средняя прибыль среди {count} фирм отработавших в плюс состалвляет: {average_dict['average_profit']}.")
-        json_list = [firm_dict, average_dict]
+        json_list = [firm_dict, average_dict, lesion_firm]
         with open("home_work_5_7.json", "w", encoding='utf-8') as f:
             json.dump(json_list, f)
 except IOError as err:

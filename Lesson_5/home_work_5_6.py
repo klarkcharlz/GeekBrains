@@ -4,18 +4,14 @@
 # Важно, чтобы для каждого предмета не обязательно были все типы занятий.
 # Сформировать словарь, содержащий название предмета и общее количество занятий по нему.
 # Вывести словарь на экран.
+import re
 
 def counter(sub_list: list):
-    num_list = []
-    for elem in sub_list:
-        num = ""
-        for el in elem:
-            if el.isdigit():
-                num += el
-        if len(num):
-            num_list.append(int(num))
-    return sum(num_list)
-
+    """Функция подсчитывает и возвращает общее количество уроков по предмету"""
+    text = " ".join(sub_list)
+    lesson_regex = re.compile(r"\d+")
+    lesson = lesson_regex.findall(text)
+    return sum(list(map(int,lesson)))
 
 subject_dict = {}
 try:
